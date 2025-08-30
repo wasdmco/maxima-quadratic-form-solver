@@ -1,0 +1,6 @@
+/* Placeholder for quadratic form solver in Maxima */
+
+solve_quadratic(eq) :=
+    block([],
+        error("quadratic solver not implemented yet"))$
+

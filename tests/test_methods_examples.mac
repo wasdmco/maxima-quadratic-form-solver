@@ -1,0 +1,43 @@
+/* Tests derived from alpertron methods examples */
+
+load("solver.mac")$
+
+verify_solution(eq, sol) := block([result],
+    result : solve_quadratic(eq),
+    if result # sol then error("expected ~a but got ~a", sol, result)
+)$
+
+/* Example 1: linear */
+verify_solution(10*x + 84*y + 16 = 0,
+               [[-136 + 42*t, 16 - 5*t]])$
+
+/* Example 2: simple hyperbolic */
+verify_solution(2*x*y + 5*x + 56*y + 7 = 0,
+               [[-27,64],[-29,-69],[-21,7],[-35,-12],[-9,1],[-47,-6],[105,-2],[-161,-3]])$
+
+/* Example 3: elliptic */
+verify_solution(42*x^2 + 8*x*y + 15*y^2 + 23*x + 17*y - 4915 = 0,
+               [[-11,-1]])$
+
+/* Example 4: parabolic */
+verify_solution(8*x^2 - 24*x*y + 18*y^2 + 5*x + 7*y + 16 = 0,
+               [[-174*t^2 - 17*t - 2, -116*t^2 - 21*t - 2],
+                [-174*t^2 - 41*t - 4, -116*t^2 - 37*t - 4]])$
+
+/* Example 5: hyperbolic general */
+verify_solution(18*x^2 + 41*x*y + 19*y^2 - 24 = 0,
+               [[-7,11],[7,-11],
+                [x[k+1] = -5109172421430431*x[k] - 34568223012719040*y[k],
+                 y[k+1] = 32748842854154880*x[k] + 69485414079700129*y[k]]])$
+
+/* Example 6: recurrence */
+verify_solution(3*x^2 + 13*x*y + 5*y^2 - 11*x - 7*y - 92 = 0,
+               [[2,3],
+                [x[k+1] = 8351*x[k] - 32625*y[k] - 28775,
+                 y[k+1] = -19575*x[k] + 76474*y[k] + 67450]])$
+
+/* Example 7: recurrence */
+verify_solution(3*x^2 + 14*x*y + 6*y^2 - 17*x - 23*y - 505 = 0,
+               [[4,7],
+                [x[k+1] = -1188641*x[k] - 4979520*y[k] + 5146869,
+                 y[k+1] = 2489760*x[k] + 10430239*y[k] - 10780770]])$
