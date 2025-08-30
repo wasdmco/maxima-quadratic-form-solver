@@ -1,0 +1,1 @@
+Experiment: use OpenAI codex to try to implement a maxima quadratic form solver, based on the methods described at https://www.alpertron.com.ar/METHODS.HTM
